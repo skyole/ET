@@ -63,6 +63,13 @@
         /// </summary>
 	    ChangeGameMode,
 
+        /// <summary>
+        /// 抢地主
+        /// </summary>
+	    GrabLordSelect,
+
+       
+
         #endregion
 
         #region 服务端 10000 +
@@ -70,12 +77,36 @@
         // 服务端开始编号从 10000 开始递增
         ServerNoStart = 10000,
 
+        #region Realm
+
+        /// <summary>
+        /// 玩家登陆 ET
+        /// </summary>
+        LoginRt,
+
+        /// <summary>
+        /// 玩家登陆 RE
+        /// </summary>
+        LoginRe,
+
+        /// <summary>
+        /// 玩家注册 RT
+        /// </summary>
+	    RegisterRt,
+
+        /// <summary>
+        /// 玩家注册 RE
+        /// </summary>
+	    RegisterRe,
+
+        #endregion
+
         #region Gate
 
         /// <summary>
         /// 获取授权Key
         /// </summary>
-	    GetLoginKeyRt,
+        GetLoginKeyRt,
 
         /// <summary>
         /// 返回授权Key
@@ -164,6 +195,121 @@
         /// 玩家弃牌
         /// </summary>
 	    Discard,
+
+        /// <summary>
+        /// 先出牌消息
+        /// </summary>
+	    AuthorityPlayCard,
+
+        /// <summary>
+        /// 获取加入房间KEY
+        /// </summary>
+	    GetJoinRoomKeyRt,
+
+        /// <summary>
+        /// 返回加入房间KEY
+        /// </summary>
+	    GetJoinRoomKeyRe,
+
+        /// <summary>
+        /// 游戏倍数
+        /// </summary>
+	    GameMultiples,
+
+        /// <summary>
+        /// 地主牌
+        /// </summary>
+	    SelectLord,
+
+        /// <summary>
+        /// 同步游戏状态
+        /// </summary>
+	    SyncRoomState,
+
+        /// <summary>
+        /// 玩家钱太少
+        /// </summary>
+	    GamerMoneyLess,
+
+        /// <summary>
+        /// 先手玩家
+        /// </summary>
+	    SelectAuthority,
+
+        /// <summary>
+        /// 游戏开始
+        /// </summary>
+	    GameStart,
+
+        /// <summary>
+        /// 玩家出牌
+        /// </summary>
+	    PlayCardsRt,
+
+        /// <summary>
+        /// 玩家出牌
+        /// </summary>
+	    PlayCardsRe,
+
+        /// <summary>
+        /// 广播玩家出牌消息
+        /// </summary>
+	    GamerPlayCards,
+
+        /// <summary>
+        /// 游戏结束
+        /// </summary>
+	    Gameover,
+
+        /// <summary>
+        /// 加入房间 RT
+        /// </summary>
+	    PlayerJoinRoomRt,
+
+        /// <summary>
+        /// 加入房间RE
+        /// </summary>
+	    PlayerJoinRoomRe,
+
+        /// <summary>
+        /// 玩家进入
+        /// </summary>
+	    GamerEnter,
+
+        /// <summary>
+        /// 玩家退出
+        /// </summary>
+	    GamerOut,
+
+        /// <summary>
+        /// 玩家准备
+        /// </summary>
+	    PlayerReady,
+
+        /// <summary>
+        /// 玩家重连
+        /// </summary>
+	    PlayerReconnect,
+
+        /// <summary>
+        /// 广播重连消息
+        /// </summary>
+	    GamerReenter,
+
+        /// <summary>
+        /// 玩家重新连接
+        /// </summary>
+	    GamerReconnect,
+
+        /// <summary>
+        /// 提示出牌 RT
+        /// </summary>
+	    PromptRt,
+
+        /// <summary>
+        /// 提示出牌 RE
+        /// </summary>
+	    PromptRe,
 
         #endregion
 

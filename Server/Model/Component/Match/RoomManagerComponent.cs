@@ -11,42 +11,42 @@ namespace Model
         /// <summary>
         /// 房间列表
         /// </summary>
-        private readonly Dictionary<long, Room> _rooms = new Dictionary<long, Room>();
+        public readonly Dictionary<long, Room> Rooms = new Dictionary<long, Room>();
 
         /// <summary>
         /// 游戏中的房间列表
         /// </summary>
-        private readonly Dictionary<long, Room> _gameRooms = new Dictionary<long, Room>();
+        public readonly Dictionary<long, Room> GameRooms = new Dictionary<long, Room>();
 
         /// <summary>
         /// 准备中的房间列表
         /// </summary>
-        private readonly Dictionary<long, Room> _readyRooms = new Dictionary<long, Room>();
+        public readonly Dictionary<long, Room> ReadyRooms = new Dictionary<long, Room>();
 
         /// <summary>
         /// 房间轮询
         /// </summary>
-        private readonly EQueue<Room> _idleRooms = new EQueue<Room>();
+        public readonly EQueue<Room> IdleRooms = new EQueue<Room>();
 
         /// <summary>
         /// 总房间数
         /// </summary>
-        public int TotalCount { get { return this._rooms.Count; } }
+        public int TotalCount { get { return this.Rooms.Count; } }
 
         /// <summary>
         /// 游戏中的房间数
         /// </summary>
-        public int GameRoomCount { get { return _gameRooms.Count; } }
+        public int GameRoomCount { get { return GameRooms.Count; } }
 
         /// <summary>
         /// 准备中的房间数
         /// </summary>
-        public int ReadyRoomCount { get { return _readyRooms.Where(p => p.Value.Count < 3).Count(); } }
+        public int ReadyRoomCount { get { return ReadyRooms.Where(p => p.Value.Count < 3).Count(); } }
 
         /// <summary>
         /// 闲置的房间数
         /// </summary>
-        public int IdleRoomCount { get { return _idleRooms.Count; } }
+        public int IdleRoomCount { get { return IdleRooms.Count; } }
 
         /// <summary>
         /// 释放资源
@@ -60,7 +60,7 @@ namespace Model
 
             base.Dispose();
 
-            foreach (var room in this._rooms.Values)
+            foreach (var room in this.Rooms.Values)
             {
                 room.Dispose();
             }

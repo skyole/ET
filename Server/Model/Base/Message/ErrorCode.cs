@@ -7,11 +7,27 @@ namespace Model
 		public const int ERR_NotFoundActor = 1;
 
         /// <summary>
+        /// 账号在线
+        /// </summary>
+	    public const int ErrAccountOnline = 10;
+        /// <summary>
+        /// 账号已经注册
+        /// </summary>
+	    public const int ErrAccountAlreadyRegister = 11;
+        /// <summary>
         /// 查询用户信息错误
         /// </summary>
 	    public const int ErrQueryUserInfoError = 12;
-	    public const int ErrStartMatchError = 14;
+        /// <summary>
+        /// 加入房间失败
+        /// </summary>
+	    public const int ErrJoinRoomError = 13;
+        public const int ErrStartMatchError = 14;
 	    public const int ErrUserMoneyLessError = 15;
+        /// <summary>
+        /// 玩家出牌错误
+        /// </summary>
+	    public const int ErrPlayCardError = 16;
 
         public const int ERR_RpcFail = 101;
 		public const int ERR_AccountOrPasswordError = 102;

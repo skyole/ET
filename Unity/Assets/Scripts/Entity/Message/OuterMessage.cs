@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.Options;
 using ProtoBuf;
 
 namespace Model
@@ -217,6 +218,50 @@ namespace Model
 
     #endregion
 
+    #region Realm
+
+    /// <summary>
+    /// 玩家登陆 RT
+    /// </summary>
+    [Message(Opcode.LoginRt)]
+    public class LoginRt : ARequest
+    {
+        public string Account;
+        public string Password;
+    }
+
+    /// <summary>
+    /// 玩家登陆 RE
+    /// </summary>
+    [Message(Opcode.LoginRe)]
+    public class LoginRe : AResponse
+    {
+        public long Key;
+        public string Address;
+    }
+
+    /// <summary>
+    /// 玩家注册 RT
+    /// </summary>
+    [Message(Opcode.RegisterRt)]
+    public class RegisterRt : ARequest
+    {
+        public string Account;
+        public string Password;
+    }
+
+    /// <summary>
+    /// 玩家注册 RE
+    /// </summary>
+    [Message(Opcode.RegisterRe)]
+    public class RegisterRe : AResponse
+    {
+
+    }
+
+
+    #endregion
+
     #region Gate
 
     /// <summary>
@@ -262,7 +307,6 @@ namespace Model
 
     #endregion
 
-
     #region DDZ
 
     /// <summary>
@@ -283,5 +327,226 @@ namespace Model
         public long PlayerId;
     }
 
+    /// <summary>
+    /// 先出牌消息
+    /// </summary>
+    [Message(Opcode.AuthorityPlayCard)]
+    public class AuthorityPlayCard : AActorMessage
+    {
+        public long PlayerId;
+        public bool IsFirst;
+    }
+
+    /// <summary>
+    /// 抢地主
+    /// </summary>
+    [Message(Opcode.GrabLordSelect)]
+    public class GrabLordSelect : AActorMessage
+    {
+        public long PlayerId;
+        public bool IsGrab;
+    }
+
+    /// <summary>
+    /// 游戏倍数 
+    /// </summary>
+    [Message(Opcode.GameMultiples)]
+    public class GameMultiples : AActorMessage
+    {
+        public int Multiples;
+    }
+
+    /// <summary>
+    /// 广播地主牌
+    /// </summary>
+    [Message(Opcode.SelectLord)]
+    public class SelectLord : AActorMessage
+    {
+        public long PlayerId;
+        public Card[] LordCards;
+    }
+
+    /// <summary>
+    /// 玩家钱太少
+    /// </summary>
+    [Message(Opcode.GamerMoneyLess)]
+    public class GamerMoneyLess : AActorMessage
+    {
+        public long PlayerId;
+    }
+
+    /// <summary>
+    /// 广播先手玩家
+    /// </summary>
+    [Message(Opcode.SelectAuthority)]
+    public class SelectAuthority : AActorMessage
+    {
+        public long PlayerId;
+    }
+
+    /// <summary>
+    /// 游戏开始
+    /// </summary>
+    [Message(Opcode.GameStart)]
+    public class GameStart : AActorMessage
+    {
+        public Card[] GamerCards;
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
+        public Dictionary<long, int> GamerCardsNum;
+    }
+
+    /// <summary>
+    /// 玩家出牌
+    /// </summary>
+    [Message(Opcode.PlayCardsRt)]
+    public class PlayCardsRt : AActorRequest
+    {
+        public long PlayerId;
+        public Card[] Cards;
+    }
+
+    /// <summary>
+    /// 玩家出牌应答
+    /// </summary>
+    [Message(Opcode.PlayCardsRe)]
+    public class PlayCardsRe : AActorResponse
+    {
+
+    }
+
+    /// <summary>
+    /// 广播玩家出牌消息
+    /// </summary>
+    [Message(Opcode.GamerPlayCards)]
+    public class GamerPlayCards : AActorMessage
+    {
+        public long PlayerId;
+        public Card[] Cards;
+    }
+
+    /// <summary>
+    /// 游戏结束
+    /// </summary>
+    [Message(Opcode.Gameover)]
+    public class Gameover : AActorMessage
+    {
+        public Identity Winner;
+        public long BasePointPerMatch;
+        public int Multiples;
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
+        public Dictionary<long, long> GamersScore;
+    }
+
+    /// <summary>
+    /// 加入房间 RT
+    /// </summary>
+    [Message(Opcode.PlayerJoinRoomRt)]
+    public class PlayerJoinRoomRt : AActorRequest
+    {
+        public long Key;
+    }
+
+    /// <summary>
+    /// 加入房间 RE
+    /// </summary>
+    [Message(Opcode.PlayerJoinRoomRe)]
+    public class PlayerJoinRoomRe : AActorResponse
+    {
+
+    }
+
+    /// <summary>
+    /// 玩家信息
+    /// </summary>
+    public class GamerInfo
+    {
+        public long PlayerId;
+        public long UserId;
+        public bool IsReady;
+    }
+
+    /// <summary>
+    /// 玩家进入
+    /// </summary>
+    [Message(Opcode.GamerEnter)]
+    public class GamerEnter : AActorMessage
+    {
+        public long RoomId;
+        public GamerInfo[] GamersInfo;
+    }
+
+    /// <summary>
+    /// 玩家退出
+    /// </summary>
+    [Message(Opcode.GamerOut)]
+    public class GamerOut : AActorMessage
+    {
+        public long PlayerId;
+    }
+
+    /// <summary>
+    /// 玩家准备
+    /// </summary>
+    [Message(Opcode.PlayerReady)]
+    public class PlayerReady : AActorMessage
+    {
+        public long PlayerId;
+    }
+
+    /// <summary>
+    /// 玩家重连
+    /// </summary>
+    [Message(Opcode.PlayerReconnect)]
+    [BsonIgnoreExtraElements]
+    public class PlayerReconnect : AMessage
+    {
+        public long PlayerId;
+        public long UserId;
+        public long GateSessionId;
+    }
+
+    /// <summary>
+    /// 广播重连消息
+    /// </summary>
+    [Message(Opcode.GamerReenter)]
+    public class GamerReenter : AActorMessage
+    {
+        public long PastId;
+        public long NewId;
+    }
+
+    /// <summary>
+    /// 玩家重新连接
+    /// </summary>
+    [Message(Opcode.GamerReconnect)]
+    public class GamerReconnect : AActorMessage
+    {
+        public long PlayerId;
+        public int Multiples;
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
+        public Dictionary<long, Identity> GamersIdentity;
+        public Card[] LordCards;
+        public KeyValuePair<long, Card[]> DeskCards;
+    }
+
+    /// <summary>
+    /// 提示出牌 RT
+    /// </summary>
+    [Message(Opcode.PromptRt)]
+    public class PromptRt : AActorRequest
+    {
+        public long PlayerId;
+    }
+
+    /// <summary>
+    /// 提示出牌 RE
+    /// </summary>
+    [Message(Opcode.PromptRe)]
+    public class PromptRe : AActorResponse
+    {
+        public Card[] Cards;
+    }
+
     #endregion
+
 }

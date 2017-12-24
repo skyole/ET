@@ -1,9 +1,40 @@
-using System.Collections.Generic;using MongoDB.Bson.Serialization.Attributes;// 服务器内部消息 Opcode从10000开始namespace Model{	public abstract partial class AMessage	{	}	public abstract partial class ARequest : AMessage	{	}	public abstract partial class AResponse : AMessage	{	}	public abstract partial class AActorMessage : AMessage	{	}		public abstract partial class AActorRequest : ARequest	{	}		public abstract partial class AActorResponse : AResponse	{	}
+using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
+
+// 服务器内部消息 Opcode从10000开始
+namespace Model
+{
+	public abstract partial class AMessage
+	{
+	}
+
+	public abstract partial class ARequest : AMessage
+	{
+	}
+
+	public abstract partial class AResponse : AMessage
+	{
+	}
+
+	public abstract partial class AActorMessage : AMessage
+	{
+	}
+	
+	public abstract partial class AActorRequest : ARequest
+	{
+	}
+	
+	public abstract partial class AActorResponse : AResponse
+	{
+	}
 
     #region 原有消息
 
 
-    /// <summary>    /// 用来包装actor消息    /// </summary>    [Message(Opcode.ActorRequest)]
+    /// <summary>
+    /// 用来包装actor消息
+    /// </summary>
+    [Message(Opcode.ActorRequest)]
     [BsonIgnoreExtraElements]
     public class ActorRequest : ARequest
     {
@@ -24,7 +55,10 @@ using System.Collections.Generic;using MongoDB.Bson.Serialization.Attributes;
 
 
 
-    /// <summary>    /// actor RPC消息响应    /// </summary>    [Message(Opcode.ActorResponse)]
+    /// <summary>
+    /// actor RPC消息响应
+    /// </summary>
+    [Message(Opcode.ActorResponse)]
     [BsonIgnoreExtraElements]
     public class ActorResponse : AResponse
     {
@@ -42,7 +76,10 @@ using System.Collections.Generic;using MongoDB.Bson.Serialization.Attributes;
 
 
 
-    /// <summary>    /// 用来包装actor消息    /// </summary>    [Message(Opcode.ActorRpcRequest)]
+    /// <summary>
+    /// 用来包装actor消息
+    /// </summary>
+    [Message(Opcode.ActorRpcRequest)]
     [BsonIgnoreExtraElements]
     public class ActorRpcRequest : ActorRequest
     {
@@ -60,7 +97,10 @@ using System.Collections.Generic;using MongoDB.Bson.Serialization.Attributes;
 
 
 
-    /// <summary>    /// actor RPC消息响应带回应    /// </summary>    [Message(Opcode.ActorRpcResponse)]
+    /// <summary>
+    /// actor RPC消息响应带回应
+    /// </summary>
+    [Message(Opcode.ActorRpcResponse)]
     [BsonIgnoreExtraElements]
     public class ActorRpcResponse : ActorResponse
     {
@@ -80,7 +120,10 @@ using System.Collections.Generic;using MongoDB.Bson.Serialization.Attributes;
 
 
 
-    /// <summary>    /// 传送unit    /// </summary>    [Message(Opcode.M2M_TrasferUnitRequest)]
+    /// <summary>
+    /// 传送unit
+    /// </summary>
+    [Message(Opcode.M2M_TrasferUnitRequest)]
     [BsonIgnoreExtraElements]
     public class M2M_TrasferUnitRequest : ARequest
     {
@@ -341,39 +384,206 @@ using System.Collections.Generic;using MongoDB.Bson.Serialization.Attributes;
     }
 
 
-    #endregion
-    #region Gate
+    #endregion
+
+    #region Realm
+
+    #endregion
+
+    #region Gate
+
     /// <summary>
     /// 获取授权Key
     /// </summary>
-    [Message(Opcode.GetLoginKeyRt)]    [BsonIgnoreExtraElements]    public class GetLoginKeyRt : ARequest    {        public long UserId;    }    /// <summary>    /// 返回授权Key    /// </summary>    [Message(Opcode.GetLoginKeyRe)]    [BsonIgnoreExtraElements]    public class GetLoginKeyRe : AResponse    {        public long Key;    }
+    [Message(Opcode.GetLoginKeyRt)]
+    [BsonIgnoreExtraElements]
+    public class GetLoginKeyRt : ARequest
+    {
+        public long UserId;
+    }
 
-    /// <summary>    /// 用户信息 请求    /// </summary>    [Message(Opcode.GetUserInfoRt)]    public class GetUserInfoRt : ARequest    {        public long UserId;    }
+    /// <summary>
+    /// 返回授权Key
+    /// </summary>
+    [Message(Opcode.GetLoginKeyRe)]
+    [BsonIgnoreExtraElements]
+    public class GetLoginKeyRe : AResponse
+    {
+        public long Key;
+    }
 
-    /// <summary>    /// 用户信息 应答    /// </summary>    [Message(Opcode.GetUserInfoRe)]    public class GetUserInfoRe : AResponse    {        public string NickName;        public int Wins;        public int Loses;        public long Money;    }
+    /// <summary>
+    /// 用户信息 请求
+    /// </summary>
+    [Message(Opcode.GetUserInfoRt)]
+    public class GetUserInfoRt : ARequest
+    {
+        public long UserId;
+    }
+
+    /// <summary>
+    /// 用户信息 应答
+    /// </summary>
+    [Message(Opcode.GetUserInfoRe)]
+    public class GetUserInfoRe : AResponse
+    {
+        public string NickName;
+        public int Wins;
+        public int Loses;
+        public long Money;
+    }
 
 
-    /// <summary>    /// 登录授权 请求    /// </summary>    [Message(Opcode.LoginGateRt)]    public class LoginGateRt : ARequest    {        public long Key;    }
+    /// <summary>
+    /// 登录授权 请求
+    /// </summary>
+    [Message(Opcode.LoginGateRt)]
+    public class LoginGateRt : ARequest
+    {
+        public long Key;
+    }
 
 
-    /// <summary>    /// 登录授权 应答    /// </summary>    [Message(Opcode.LoginGateRe)]    public class LoginGateRe : AResponse    {        public long PlayerId;        public long UserId;    }    #endregion
+    /// <summary>
+    /// 登录授权 应答
+    /// </summary>
+    [Message(Opcode.LoginGateRe)]
+    public class LoginGateRe : AResponse
+    {
+        public long PlayerId;
+        public long UserId;
+    }
+    #endregion
 
-    #region 网关消息
-    /// <summary>    /// 用户断开    /// </summary>    [Message(Opcode.PlayerDisconnect)]    [BsonIgnoreExtraElements]    public class PlayerDisconnect : AMessage    {        public long UserId;    }    /// <summary>
+    #region 网关消息
+
+    /// <summary>
+    /// 用户断开
+    /// </summary>
+    [Message(Opcode.PlayerDisconnect)]
+    [BsonIgnoreExtraElements]
+    public class PlayerDisconnect : AMessage
+    {
+        public long UserId;
+    }
+
+    /// <summary>
     /// 用户退出
-    /// </summary>    [Message(Opcode.PlayerQuit)]    [BsonIgnoreExtraElements]    public class PlayerQuit : AActorMessage    {        public long PlayerId;    }    /// <summary>
-    /// 加入匹配
-    /// </summary>    [Message(Opcode.JoinMatchRt)]    [BsonIgnoreExtraElements]    public class JoinMatchRt : ARequest    {        public long PlayerId;        public long UserId;        public long GateSessionId;        public int GateAppId;    }    /// <summary>
-    /// 匹配反馈
-    /// </summary>    [Message(Opcode.JoinMatchRe)]    [BsonIgnoreExtraElements]    public class JoinMatchRe : AResponse    {        public long ActorId;    }
+    /// </summary>
+    [Message(Opcode.PlayerQuit)]
+    [BsonIgnoreExtraElements]
+    public class PlayerQuit : AActorMessage
+    {
+        public long PlayerId;
+    }
 
-    #endregion
-    #region Match
+    /// <summary>
+    /// 加入匹配
+    /// </summary>
+    [Message(Opcode.JoinMatchRt)]
+    [BsonIgnoreExtraElements]
+    public class JoinMatchRt : ARequest
+    {
+        public long PlayerId;
+        public long UserId;
+        public long GateSessionId;
+        public int GateAppId;
+    }
+
+    /// <summary>
+    /// 匹配反馈
+    /// </summary>
+    [Message(Opcode.JoinMatchRe)]
+    [BsonIgnoreExtraElements]
+    public class JoinMatchRe : AResponse
+    {
+        public long ActorId;
+    }
+
+    #endregion
+
+    #region Match
+
     /// <summary>
     /// 游戏匹配成功
-    /// </summary>    [Message(Opcode.MatchSuccess)]    [BsonIgnoreExtraElements]    public class MatchSuccess : AMessage    {        public long PlayerId;        public long RoomId;        public long Key;    }    #endregion
+    /// </summary>
+    [Message(Opcode.MatchSuccess)]
+    [BsonIgnoreExtraElements]
+    public class MatchSuccess : AMessage
+    {
+        public long PlayerId;
+        public long RoomId;
+        public long Key;
+    }
 
-    #region DDZ
-    /// <summary>    /// 用户退出房间    /// </summary>    [Message(Opcode.GamerQuitRoom)]    [BsonIgnoreExtraElements]    public class GamerQuitRoom : AMessage    {        public long RoomId;        public long PlayerId;    }    [Message(Opcode.CreateRoomRt)]    [BsonIgnoreExtraElements]    public class CreateRoomRt : ARequest    {        public RoomLevel Level;    }    [Message(Opcode.CreateRoomRe)]    [BsonIgnoreExtraElements]    public class CreateRoomRe : AResponse    {        public long RoomId;    }    #endregion
+    #endregion
+
+    #region DDZ
+
+    /// <summary>
+    /// 用户退出房间
+    /// </summary>
+    [Message(Opcode.GamerQuitRoom)]
+    [BsonIgnoreExtraElements]
+    public class GamerQuitRoom : AMessage
+    {
+        public long RoomId;
+        public long PlayerId;
+    }
+
+    /// <summary>
+    /// 请求创建房间
+    /// </summary>
+    [Message(Opcode.CreateRoomRt)]
+    [BsonIgnoreExtraElements]
+    public class CreateRoomRt : ARequest
+    {
+        public RoomLevel Level;
+    }
+
+    /// <summary>
+    /// 返回创建房间ID
+    /// </summary>
+    [Message(Opcode.CreateRoomRe)]
+    [BsonIgnoreExtraElements]
+    public class CreateRoomRe : AResponse
+    {
+        public long RoomId;
+    }
+
+    /// <summary>
+    /// 获取加入房间KEY
+    /// </summary>
+    [Message(Opcode.GetJoinRoomKeyRt)]
+    [BsonIgnoreExtraElements]
+    public class GetJoinRoomKeyRt : AActorRequest
+    {
+        public long PlayerId;
+        public long UserId;
+        public long GateSeesionId;
+    }
+
+    /// <summary>
+    /// 返回加入房间KEY
+    /// </summary>
+    [Message(Opcode.GetJoinRoomKeyRe)]
+    [BsonIgnoreExtraElements]
+    public class GetJoinRoomKeyRe : AActorResponse
+    {
+        public long Key;
+    }
+
+    /// <summary>
+    /// 同步游戏状态
+    /// </summary>
+    [Message(Opcode.SyncRoomState)]
+    [BsonIgnoreExtraElements]
+    public class SyncRoomState : AMessage
+    {
+        public long RoomId;
+        public RoomState State;
+    }
+
+    #endregion
 
 }

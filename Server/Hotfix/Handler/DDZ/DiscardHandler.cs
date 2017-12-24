@@ -26,7 +26,7 @@ namespace Hotfix
                     {
                         entity.GetComponent<DeskCardsCacheComponent>().Clear();
                     }
-                    entity.Broadcast(new AuthorityPlayCard() { PlayerID = orderController.CurrentAuthority, IsFirst = isFirst });
+                    entity.Broadcast(new AuthorityPlayCard() { PlayerId = orderController.CurrentAuthority, IsFirst = isFirst });
                 }
             }
             return Task.CompletedTask;
