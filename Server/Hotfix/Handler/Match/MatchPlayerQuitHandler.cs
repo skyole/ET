@@ -4,9 +4,9 @@ using Model;
 namespace Hotfix
 {
     [ActorMessageHandler(AppType.Match)]
-    public class MatchPlayerQuitHandler : AMActorHandler<Matcher, PlayerQuit>
+    public class MatchPlayerQuitHandler : AMActorHandler<Matcher, PlayerQuitMacth>
     {
-        protected override Task Run(Matcher entity, PlayerQuit message)
+        protected override Task Run(Matcher entity, PlayerQuitMacth message)
         {
             //移除匹配队列
             if (entity.PlayerId == message.PlayerId)

@@ -34,7 +34,7 @@ namespace Hotfix
 			IPEndPoint connetEndPoint = NetworkHelper.ToIPEndPoint(GlobalConfigComponent.Instance.GlobalProto.Address);
 			session = Game.Scene.GetComponent<NetOuterComponent>().Create(connetEndPoint);
 			string text = this.account.GetComponent<InputField>().text;
-			session.CallWithAction(new C2R_Login() { Account = text, Password = "111111" }, (response) => LoginOK(session, response));
+			session.CallWithAction(new C2R_Login() { Account = 1, Password = "111111" }, (response) => LoginOK(session, response));
 		}
 
 		private void LoginOK(Session loginSession, AResponse response)

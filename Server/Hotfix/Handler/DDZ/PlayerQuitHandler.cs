@@ -4,9 +4,9 @@ using Model;
 namespace Hotfix
 {
     [ActorMessageHandler(AppType.DDZ)]
-    public class MapPlayerQuitHandler : AMActorHandler<Room, PlayerQuit>
+    public class MapPlayerQuitHandler : AMActorHandler<Room, PlayerQuitDdz>
     {
-        protected override Task Run(Room entity, PlayerQuit message)
+        protected override Task Run(Room entity, PlayerQuitDdz message)
         {
             Gamer gamer = entity.Get(message.PlayerId);
             if (gamer != null)

@@ -112,7 +112,6 @@ namespace App
 						Game.Scene.AddComponent<UnitComponent>();
 						Game.Scene.AddComponent<DBComponent>();
 						Game.Scene.AddComponent<DBProxyComponent>();
-					    Game.Scene.AddComponent<DBProxyComponent>();
 						Game.Scene.AddComponent<LocationComponent>();
 						Game.Scene.AddComponent<ActorMessageDispatherComponent>();
 						Game.Scene.AddComponent<ActorManagerComponent>();
@@ -124,15 +123,12 @@ namespace App
 						Game.Scene.AddComponent<GateSessionKeyComponent>();
 						Game.Scene.AddComponent<ConfigComponent>();
 						Game.Scene.AddComponent<ServerFrameComponent>();
-
                         Game.Scene.AddComponent<MatcherComponent>();
                         Game.Scene.AddComponent<MatchComponent>();
                         Game.Scene.AddComponent<RoomManagerComponent>();
                         Game.Scene.AddComponent<RealmDDZAddressComponent>();
                         Game.Scene.AddComponent<RoomComponent>();
                         Game.Scene.AddComponent<PlayerLoginManagerComponent>();
-
-
                         break;
 					case AppType.Benchmark:
 						Game.Scene.AddComponent<NetOuterComponent>();

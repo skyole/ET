@@ -43,18 +43,6 @@ namespace Model
         public AMessage AMessage { get; set; }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     /// <summary>
     /// actor RPC消息响应
     /// </summary>
@@ -63,17 +51,6 @@ namespace Model
     public class ActorResponse : AResponse
     {
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     /// <summary>
@@ -85,16 +62,7 @@ namespace Model
     {
     }
 
-
-
-
-
-
-
-
-
-
-
+  
 
 
     /// <summary>
@@ -106,16 +74,6 @@ namespace Model
     {
         public AMessage AMessage { get; set; }
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -468,11 +426,21 @@ namespace Model
     }
 
     /// <summary>
-    /// 用户退出
+    /// 用户退出 DDZ
     /// </summary>
-    [Message(Opcode.PlayerQuit)]
+    [Message(Opcode.PlayerQuitDdz)]
     [BsonIgnoreExtraElements]
-    public class PlayerQuit : AActorMessage
+    public class PlayerQuitDdz : AActorMessage
+    {
+        public long PlayerId;
+    }
+
+    /// <summary>
+    /// 用户退出 Macth
+    /// </summary>
+    [Message(Opcode.PlayerQuitMacth)]
+    [BsonIgnoreExtraElements]
+    public class PlayerQuitMacth : AActorMessage
     {
         public long PlayerId;
     }

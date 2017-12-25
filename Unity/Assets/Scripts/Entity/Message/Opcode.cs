@@ -159,9 +159,15 @@
 	    RoomKey,
 
         /// <summary>
-        /// 用户退出
+        /// 用户退出 DDZ 
         /// </summary>
-	    PlayerQuit,
+	    PlayerQuitDdz,
+
+        /// <summary>
+        /// 用户退出 Macth
+        /// </summary>
+        PlayerQuitMacth,
+
 
         #endregion
 

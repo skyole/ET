@@ -12,7 +12,7 @@ namespace Hotfix
             {
                 //向Actor对象发送退出消息
                 ActorProxy actorProxy = Game.Scene.GetComponent<ActorProxyComponent>().Get(player.ActorId);
-                actorProxy.Send(new PlayerQuit() { PlayerId = player.Id });
+                actorProxy.Send(new PlayerQuitDdz() { PlayerId = player.Id });
                 player.ActorId = 0;
             }
         }

@@ -192,7 +192,7 @@ namespace Hotfix
                 if (isKickOut)
                 {
                     ActorProxy actorProxy = Game.Scene.GetComponent<ActorProxyComponent>().Get(self.Entity.Id);
-                    actorProxy.Send(new PlayerQuit() { PlayerId = gamers[i].Id });
+                    actorProxy.Send(new PlayerQuitDdz() { PlayerId = gamers[i].Id });
                 }
             }
         }
