@@ -52,8 +52,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-  - key: UILoading
-    gameObject: {fileID: 1386170326414932, guid: 0deea0b3b021a714d8c54816d4ee5fbe,
+  - key: Atlas
+    gameObject: {fileID: 1947019265242484, guid: 1011918420bb7074faa32dd8a47ffff3,
+      type: 2}
+  - key: Content
+    gameObject: {fileID: 1152890586565776, guid: 5a5e8d196ce29bd469431765b37aaf67,
+      type: 2}
+  - key: EndPanel
+    gameObject: {fileID: 1821704178938970, guid: c00cd2352b096344e8541dddc093cac7,
       type: 2}
   - key: GlobalProto
     gameObject: {fileID: 4900000, guid: 78f3a209a7b81ec46a196b52eea7e541, type: 3}
+  - key: HandCard
+    gameObject: {fileID: 1273071699939318, guid: 2f2c6ecdeec64784d85ae14f197557bd,
+      type: 2}
+  - key: InteractionPanel
+    gameObject: {fileID: 1734559079194810, guid: 6327637a6dd5ccd47810dce62bdc6909,
+      type: 2}
+  - key: PlayCard
+    gameObject: {fileID: 1892213151196882, guid: 6d26f7d009dd97b4a904cca57dc218bb,
+      type: 2}
+  - key: UILoading
+    gameObject: {fileID: 1386170326414932, guid: 0deea0b3b021a714d8c54816d4ee5fbe,
+      type: 2}
+  - key: UILobby
+    gameObject: {fileID: 1644593265212990, guid: b66b56929079f6242a76a176c8d2889f,
+      type: 2}
+  - key: UILogin
+    gameObject: {fileID: 1389950918766942, guid: 7b760e025f147544c91fa7a580f43ce5,
+      type: 2}
+  - key: UIRoom
+    gameObject: {fileID: 1303633593135056, guid: 1185021e64d710947b5859adb5653622,
+      type: 2}

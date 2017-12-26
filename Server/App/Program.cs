@@ -86,7 +86,6 @@ namespace App
 						break;
                     case AppType.Match:
                         Game.Scene.AddComponent<NetInnerComponent, IPEndPoint>(innerConfig.IPEndPoint);
-                        Game.Scene.AddComponent<ActorManagerComponent>();
                         Game.Scene.AddComponent<LocationComponent>();
                         Game.Scene.AddComponent<ActorManagerComponent>();
                         Game.Scene.AddComponent<ActorMessageDispatherComponent>();

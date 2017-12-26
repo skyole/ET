@@ -81,10 +81,15 @@
     <Compile Include="Base\Object\ObjectEvents.cs" />
     <Compile Include="Base\Object\ObjectPool.cs" />
     <Compile Include="Base\Other\IUIFactory.cs" />
+    <Compile Include="Component\GamerComponent.cs" />
+    <Compile Include="Component\GamerUIComponent.cs" />
+    <Compile Include="Component\HandCardsComponent.cs" />
     <Compile Include="Component\UIComponent.cs" />
+    <Compile Include="Entity\Gamer.cs" />
     <Compile Include="Entity\Hotfix.cs" />
     <Compile Include="Entity\Scene.cs" />
     <Compile Include="Entity\UI.cs" />
+    <Compile Include="Helper\CardHelper.cs" />
     <Compile Include="Init.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\UILobby\Component\UILobbyComponent.cs" />
@@ -92,6 +97,12 @@
     <Compile Include="UI\UILogin\Component\UILoginComponent.cs" />
     <Compile Include="UI\UILogin\Event\InitSceneStart_CreateLoginUI.cs" />
     <Compile Include="UI\UILogin\Factory\UILoginFactory.cs" />
+    <Compile Include="UI\UIRoom\Component\InteractionComponent.cs" />
+    <Compile Include="UI\UIRoom\Component\UIEndComponent.cs" />
+    <Compile Include="UI\UIRoom\Component\UIRoomComponent.cs" />
+    <Compile Include="UI\UIRoom\Factory\UIEndFactory.cs" />
+    <Compile Include="UI\UIRoom\Factory\UIInteractionFactory.cs" />
+    <Compile Include="UI\UIRoom\Factory\UIRoomFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Event\" />

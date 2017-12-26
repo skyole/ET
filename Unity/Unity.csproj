@@ -272,6 +272,7 @@
     <Compile Include="Assets\Scripts\Component\BehaviorTreeComponent.cs" />
     <Compile Include="Assets\Scripts\Component\BundleDownloaderComponent.cs" />
     <Compile Include="Assets\Scripts\Component\CameraComponent.cs" />
+    <Compile Include="Assets\Scripts\Component\ClientComponent.cs" />
     <Compile Include="Assets\Scripts\Component\ClientFrameComponent.cs" />
     <Compile Include="Assets\Scripts\Component\Config\ClientConfig.cs" />
     <Compile Include="Assets\Scripts\Component\Config\DBConfig.cs" />
@@ -320,6 +321,7 @@
     <Compile Include="Assets\Scripts\Event\NumericWatcher_Hp_ShowUI.cs" />
     <Compile Include="Assets\Scripts\Factory\PlayerFactory.cs" />
     <Compile Include="Assets\Scripts\Factory\UnitFactory.cs" />
+    <Compile Include="Assets\Scripts\HandCardSprite.cs" />
     <Compile Include="Assets\Scripts\Handler\Actor_CreateUnitsHandler.cs" />
     <Compile Include="Assets\Scripts\Handler\Actor_TestHandler.cs" />
     <Compile Include="Assets\Scripts\Handler\Frame_ClickMapHandler.cs" />
@@ -347,8 +349,6 @@
     <Compile Include="Assets\Scripts\Other\UIFactoryAttribute.cs" />
     <Compile Include="Assets\Scripts\Other\UIType.cs" />
     <Compile Include="Assets\Scripts\UI\UILoading\Component\UILoadingComponent.cs" />
-    <Compile Include="Assets\Scripts\UI\UILoading\Event\LoadingBeginEvent_CreateLoadingUI.cs" />
-    <Compile Include="Assets\Scripts\UI\UILoading\Event\LoadingFinishEvent_RemoveLoadingUI.cs" />
     <Compile Include="Assets\Scripts\UI\UILoading\Factory\UILoadingFactory.cs" />
     <Compile Include="Assets\ThirdParty\ILRuntime\ILRuntime\CLR\Method\CLRMethod.cs" />
     <Compile Include="Assets\ThirdParty\ILRuntime\ILRuntime\CLR\Method\ExceptionHandler.cs" />
@@ -580,7 +580,6 @@
     <None Include="Assets\Res\Config\UnitConfig.txt" />
     <None Include="Assets\link.xml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

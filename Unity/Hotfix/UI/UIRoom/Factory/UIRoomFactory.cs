@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Hotfix
 {
-    [UIFactory((int)UIType.UILobby)]
-    public class UILobbyFactory : IUIFactory
+    [UIFactory((int)UIType.UIRoom)]
+    public class UIRoomFactory : IUIFactory
     {
         public UI Create(Scene scene, UIType type, GameObject parent)
         {
@@ -17,8 +17,10 @@ namespace Hotfix
                 GameObject lobby = UnityEngine.Object.Instantiate(bundleGameObject);
                 lobby.layer = LayerMask.NameToLayer(LayerNames.UI);
                 UI ui = EntityFactory.Create<UI, Scene, UI, GameObject>(scene, null, lobby);
+       
+                ui.AddComponent<GamerComponent>();
+                ui.AddComponent<UIRoomComponent>();
 
-                ui.AddComponent<UILobbyComponent>();
                 return ui;
             }
             catch (Exception e)

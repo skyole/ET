@@ -223,36 +223,46 @@ namespace Model
     /// <summary>
     /// 玩家登陆 RT
     /// </summary>
+    [ProtoContract]
     [Message(Opcode.LoginRt)]
     public class LoginRt : ARequest
     {
+        [ProtoMember(1)]
         public string Account;
+        [ProtoMember(2)]
         public string Password;
     }
 
     /// <summary>
     /// 玩家登陆 RE
     /// </summary>
+    [ProtoContract]
     [Message(Opcode.LoginRe)]
     public class LoginRe : AResponse
     {
+        [ProtoMember(1)]
         public long Key;
+        [ProtoMember(2)]
         public string Address;
     }
 
     /// <summary>
     /// 玩家注册 RT
     /// </summary>
+    [ProtoContract]
     [Message(Opcode.RegisterRt)]
     public class RegisterRt : ARequest
     {
+        [ProtoMember(1)]
         public string Account;
+        [ProtoMember(2)]
         public string Password;
     }
 
     /// <summary>
     /// 玩家注册 RE
     /// </summary>
+    [ProtoContract]
     [Message(Opcode.RegisterRe)]
     public class RegisterRe : AResponse
     {
@@ -263,6 +273,27 @@ namespace Model
     #endregion
 
     #region Gate
+
+    /// <summary>
+    /// 用户信息 请求
+    /// </summary>
+    [Message(Opcode.GetUserInfoRt)]
+    public class GetUserInfoRt : ARequest
+    {
+        public long UserId;
+    }
+
+    /// <summary>
+    /// 用户信息 应答
+    /// </summary>
+    [Message(Opcode.GetUserInfoRe)]
+    public class GetUserInfoRe : AResponse
+    {
+        public string NickName;
+        public int Wins;
+        public int Loses;
+        public long Money;
+    }
 
     /// <summary>
     /// 房间Key
@@ -280,6 +311,26 @@ namespace Model
     public class Quit : AMessage
     {
         public long PlayerId;
+    }
+
+      /// <summary>
+    /// 登录授权 请求
+    /// </summary>
+    [Message(Opcode.LoginGateRt)]
+    public class LoginGateRt : ARequest
+    {
+        public long Key;
+    }
+
+
+    /// <summary>
+    /// 登录授权 应答
+    /// </summary>
+    [Message(Opcode.LoginGateRe)]
+    public class LoginGateRe : AResponse
+    {
+        public long PlayerId;
+        public long UserId;
     }
 
     #endregion

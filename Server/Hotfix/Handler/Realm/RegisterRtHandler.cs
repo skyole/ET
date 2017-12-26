@@ -15,6 +15,8 @@ namespace Hotfix
                 //数据库操作对象
                 DBProxyComponent dbProxy = Game.Scene.GetComponent<DBProxyComponent>();
 
+                Log.Debug("RegisterRt:" + message.Account + " - " + message.Password);
+
                 //查询账号是否存在
                 List<AccountInfo> result = await dbProxy.QueryJson<AccountInfo>($"{"{'Account':'"}{message.Account}{"'}"}");
                 if (result.Count > 0)

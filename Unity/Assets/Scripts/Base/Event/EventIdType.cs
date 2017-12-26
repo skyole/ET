@@ -21,8 +21,11 @@
 		MessageDeserializeFinish,
 		SceneChange,
 		FrameUpdate,
-		
-		LoadingBegin,
-		LoadingFinish,
+
+	    LoadingBegin,
+	    LoadingFinish,
+
+        SelectHandCard,
+        CancelHandCard,
 	}
 }

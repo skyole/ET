@@ -4,7 +4,10 @@
     {
         Root = 0,
         UILogin,
-		UILobby,
-	    UILoading,
-	}
+        UILobby,
+        UIRoom,
+        Interaction,
+        EndPanel,
+        UILoading,
+    }
 }

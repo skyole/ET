@@ -370,47 +370,7 @@ namespace Model
         public long Key;
     }
 
-    /// <summary>
-    /// 用户信息 请求
-    /// </summary>
-    [Message(Opcode.GetUserInfoRt)]
-    public class GetUserInfoRt : ARequest
-    {
-        public long UserId;
-    }
-
-    /// <summary>
-    /// 用户信息 应答
-    /// </summary>
-    [Message(Opcode.GetUserInfoRe)]
-    public class GetUserInfoRe : AResponse
-    {
-        public string NickName;
-        public int Wins;
-        public int Loses;
-        public long Money;
-    }
-
-
-    /// <summary>
-    /// 登录授权 请求
-    /// </summary>
-    [Message(Opcode.LoginGateRt)]
-    public class LoginGateRt : ARequest
-    {
-        public long Key;
-    }
-
-
-    /// <summary>
-    /// 登录授权 应答
-    /// </summary>
-    [Message(Opcode.LoginGateRe)]
-    public class LoginGateRe : AResponse
-    {
-        public long PlayerId;
-        public long UserId;
-    }
+  
     #endregion
 
     #region 网关消息
